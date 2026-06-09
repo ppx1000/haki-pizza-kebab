@@ -1,70 +1,522 @@
 
 
-
-
-
-
-<!DOCTYPE html>
-<html
-  lang="en"
-  
-  data-color-mode="auto" data-light-theme="light" data-dark-theme="dark"
-  data-a11y-animated-images="system" data-a11y-link-underlines="true"
-  
-  >
-
-    <style>
+```css
 :root {
-  --fontStack-monospace: "Monaspace Neon", ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace !important;
+  --bg: #fffaf3;
+  --surface: #ffffff;
+  --surface-soft: #fff1df;
+  --text: #241713;
+  --muted: #765f55;
+  --brand: #d74324;
+  --brand-dark: #9f2a17;
+  --accent: #f3b23c;
+  --border: rgba(36, 23, 19, 0.14);
+  --shadow: 0 18px 50px rgba(64, 35, 22, 0.14);
+  --radius: 18px;
+  --container: 1120px;
 }
-</style>
 
+* {
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
 
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
 
-  <head>
-    <meta charset="utf-8">
-  <link rel="dns-prefetch" href="https://github.githubassets.com">
-  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
-  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
-  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
-  <link rel="preconnect" href="https://github.githubassets.com" crossorigin>
-  <link rel="preconnect" href="https://avatars.githubusercontent.com">
+img {
+  max-width: 100%;
+  display: block;
+}
 
-  
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
+.container {
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
 
-  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/light-4fded0090af0ad58.css" /><link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dark-06381ff23d863842.css" /><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast-cf8e26bc17e62ebc.css" /><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind-3a437477a570cc40.css" /><link data-color-theme="light_colorblind_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind_high_contrast-39b6c209db5491c9.css" /><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia-3822234d6c03b00b.css" /><link data-color-theme="light_tritanopia_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia_high_contrast-33857254a8064bf7.css" /><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast-9023e6605402defb.css" /><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind-37023bf69d8e0e34.css" /><link data-color-theme="dark_colorblind_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind_high_contrast-486bd43e01a2c0ec.css" /><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia-838ba2a5070c5b09.css" /><link data-color-theme="dark_tritanopia_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia_high_contrast-2aa7245dc545d61f.css" /><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed-29ef2eb185e7de1c.css" /><link data-color-theme="dark_dimmed_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed_high_contrast-8eed6b212f10f1b9.css" />
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 250, 243, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
 
-  <style type="text/css">
-    :root {
-      --tab-size-preference: 4;
-    }
+.navbar {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
 
-    pre, code {
-      tab-size: var(--tab-size-preference);
-    }
-  </style>
+.logo {
+  font-weight: 900;
+  font-size: 1.35rem;
+  color: var(--brand);
+}
 
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-primitives-b39ad27f3538ace3.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-tailwind-compatible-a5d19d218226bf2a.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-9c8f61f9f58ad7b2.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/github-9bab71cd415bc0fa.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/tailwind-ee832f465450400b.css" />
-  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/repository-5c3491d57145b94f.css" />
-<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/code-046bfa7cf217de14.css" />
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
 
-  
+.site-nav a {
+  font-weight: 700;
+  color: var(--muted);
+}
 
-  <script type="application/json" id="client-env">{"locale":"en","featureFlags":["actions_custom_images_storage_billing_ui_visibility","actions_image_version_event","actions_workflow_language_service_allow_case_function","actions_workflow_language_service_allow_concurrency_queue","activity_use_list_to_build_groups","agent_conflict_resolution","alternate_user_config_repo","arianotify_comprehensive_migration","artifact_ui_v2","billing_discount_threshold_notification","billing_ui_budget_pagination_enabled","billing_user_level_budgets","billing_user_level_budgets_manage","ccr_implement_suggestion_refresh","code_scanning_dfa_degraded_experience_notice","code_view_checks_live_updates","codemirror_inp_optimizations","codespaces_prebuild_region_target_update","codeview_sidebar_combined_payload","coding_agent_model_selection","coding_agent_model_selection_all_skus","coding_agent_session_ai_credits","comment_viewer_copy_raw_markdown","contentful_primer_code_blocks","copilot_agent_snippy","copilot_api_agentic_issue_marshal_yaml","copilot_ask_mode_dropdown","copilot_automation_suggest_tools_enabled","copilot_automations_suggested_automations","copilot_chat_attach_multiple_images","copilot_chat_category_rate_limit_messages","copilot_chat_clear_model_selection_for_default_change","copilot_chat_contextual_suggestions_updated","copilot_chat_disable_model_picker_while_streaming","copilot_chat_docked_panel","copilot_chat_enable_tool_call_logs","copilot_chat_increase_token_padding","copilot_chat_input_commands","copilot_chat_input_performance_optimizations","copilot_chat_max_upsell","copilot_chat_models_via_backend","copilot_chat_opening_thread_switch","copilot_chat_prettify_pasted_code","copilot_chat_reduce_quota_checks","copilot_chat_structured_list_refs","copilot_chat_vision_in_claude","copilot_chat_vision_preview_gate","copilot_cli_install_cta_max_plan","copilot_cloud_agent_always_categorize_models_in_model_picker","copilot_coding_agent_tbb_quota_banner","copilot_custom_copilots","copilot_custom_copilots_feature_preview","copilot_delete_cli_sessions","copilot_diff_explain_conversation_intent","copilot_diff_reference_context","copilot_dotcom_chat_memoize_messages","copilot_dotcom_chat_proactive_repo_autocomplete","copilot_duplicate_thread","copilot_extensions_hide_in_dotcom_chat","copilot_extensions_removal_on_marketplace","copilot_file_block_ref_matching","copilot_fix_failed_workflows","copilot_fix_failed_workflows_all_skus","copilot_ftp_hyperspace_upgrade_prompt","copilot_hide_hovercard","copilot_icebreakers_experiment_dashboard","copilot_icebreakers_experiment_hyperspace","copilot_immersive_code_block_transition_wrap","copilot_immersive_embedded_deferred_payload","copilot_immersive_embedded_draggable","copilot_immersive_embedded_header_button","copilot_immersive_embedded_implicit_references","copilot_immersive_embedded_skip_copilot_api_token_for_dotcom_context","copilot_immersive_file_block_transition_open","copilot_immersive_file_preview_keep_mounted","copilot_immersive_job_result_preview","copilot_immersive_structured_model_picker","copilot_immersive_suggestion_pills","copilot_immersive_task_hyperlinking","copilot_immersive_task_within_chat_thread","copilot_issue_list_show_more","copilot_mc_cli_resume_any_users_task","copilot_mc_nudges","copilot_mission_control_agent_filtering","copilot_mission_control_agents_task_list","copilot_mission_control_always_send_integration_id","copilot_mission_control_chronicle_commands","copilot_mission_control_chronicle_commands_dropdown","copilot_mission_control_cli_private_icon","copilot_mission_control_cli_session_status","copilot_mission_control_environment_list_icons","copilot_mission_control_initial_data_spinner","copilot_mission_control_logs_incremental","copilot_mission_control_sandbox_remote_bypass","copilot_mission_control_session_filters","copilot_mission_control_task_alive_updates","copilot_mission_control_task_sharing","copilot_mission_control_tasks_repo_filter","copilot_org_policy_page_focus_mode","copilot_pr_chat_enhancements","copilot_premium_request_quotas","copilot_redirect_header_button_to_agents","copilot_resource_panel","copilot_scroll_preview_tabs","copilot_share_active_subthread","copilot_spaces_ga","copilot_spaces_individual_policies_ga","copilot_spaces_pagination","copilot_spark_empty_state","copilot_spark_handle_nil_friendly_name","copilot_swe_agent_authorization_status_ui","copilot_swe_agent_hide_model_picker_if_only_auto","copilot_swe_agent_pr_comment_model_picker","copilot_swe_agent_pull_request_merged_trigger","copilot_swe_agent_pull_request_opened_trigger","copilot_swe_agent_pull_request_synchronize_trigger","copilot_swe_agent_use_subagents","copilot_task_api_github_rest_style","copilot_token_based_billing","copilot_unconfigured_is_inherited","copilot_user_can_upgrade_plan_field","copilot_workbench_slim_line_top_tabs","copilot_workbench_ubb","create_ghas_hard_budgets","custom_instructions_file_references","dashboard_indexeddb_caching","dashboard_lists_max_age_filter","dashboard_universe_2025","dashboard_universe_2025_feedback_dialog","fgpat_permissions_selector_redesign","flex_cta_groups_mvp","ga_enterprise_teams_ui","global_nav_react","global_navigation_cached_payloads","hide_groups_list_for_few_groups","hyperspace_2025_logged_out_batch_1","hyperspace_2025_logged_out_batch_2","hyperspace_2025_logged_out_batch_3","ipm_budget_deep_linking","ipm_global_transactional_message_agents","ipm_global_transactional_message_copilot","ipm_global_transactional_message_issues","ipm_global_transactional_message_prs","ipm_global_transactional_message_repos","ipm_global_transactional_message_spaces","issue_cca_modal_open","issue_cca_multi_assign_modal","issue_cca_visualization","issue_fields_global_search","issues_expanded_file_types","issues_lazy_load_comment_box_suggestions","issues_react_chrome_container_query_fix","issues_react_include_bots_in_pickers","issues_react_ui_feedback","issues_search_type_gql","landing_pages_ninetailed","landing_pages_web_vitals_tracking","lifecycle_label_name_updates","low_quality_classifier","marketing_pages_search_explore_provider","memex_default_issue_create_repository","memex_live_update_hovercard","memex_mwl_filter_field_delimiter","memex_remove_deprecated_type_issue","memex_roadmap_drag_style","merge_status_header_feedback","oauth_authorize_clickjacking_protection","octocaptcha_origin_optimization","pr_sfv_new_diff_fetch","primer_react_styled_react_use_primer_theme_providers","prs_checks_react","prs_conversations_react","prs_css_anchor_positioning","prs_live_updates_issue_comments","prs_load_all_alerts","prx_files","pull_request_commit_checks_dialog","pull_request_files_accurate_size_estimates","pull_request_files_virtualization","pull_request_inbox_customize_sections","pull_request_overview_panel_edit_description","pull_request_virtualization_preload_diffs","pulls_list_item_compact_layout_v2","pulls_reduce_es_query_on_deferred_request","react_blob_overlay","react_data_router_tanstack_allowed","react_sandbox_future_tanstack","repos_contributors_limited_default_range","repository_suggester_elastic_search","rules_insights_filter_bar_created","rules_required_reviewers_block_description","sample_network_conn_type","secret_scanning_pattern_alerts_link","security_center_artifact_filters_popover","session_logs_ungroup_reasoning_text","site_copilot_max_plans","site_features_copilot_universe","site_github_app_ga_page","site_global_nav_spark_models_removed","site_homepage_collaborate_video","spark_prompt_secret_scanning","spark_server_connection_status","suppress_automated_browser_vitals","team_review_requested_by_user_filter","track_notifications_settings_usage","viewscreen_sandbox","warn_inaccessible_attachments","webp_support","workbench_store_readonly"],"login":"ppx1000","copilotApiOverrideUrl":"https://api.individual.githubcopilot.com"}</script>
-<script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/wp-runtime-82ee76b7c4c4fba6.js" defer="defer"></script>
-<script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/fetch-utilities-f1b06a7448671df6.js" defer="defer"></script>
-<script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/78205-a328faf42e1fde9e.js" defer="defer"></script>
-<script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/85924-1f0f5f61600f9c8e.js" defer="defer"></script>
-<script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/34646-b68e58c07f4b3de7.js" defer="defer"></script>
-<script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/environment-2853d57c6f661218.js" defer="defer"></script>
-<script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/runtime-helpers-6e561c87b9671d53.js" defer="defer"></script>
-<script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/296-20965d7d607b213c.js" defer="defer"></script>
+.site-nav a:hover {
+  color: var(--brand);
+}
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 5px auto;
+  background: var(--text);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-open .nav-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.hero {
+  position: relative;
+  min-height: 680px;
+  overflow: hidden;
+  background: #1c120f;
+  color: #fff;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.slide.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 10, 6, 0.78), rgba(20, 10, 6, 0.22));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  min-height: 680px;
+  display: grid;
+  align-content: center;
+  max-width: 680px;
+  padding: 90px 0;
+}
+
+.hero h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2.6rem, 7vw, 5.8rem);
+  line-height: 0.96;
+}
+
+.hero p {
+  margin: 0 0 30px;
+  font-size: 1.15rem;
+  max-width: 560px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(215, 67, 36, 0.32);
+}
+
+.btn:hover {
+  background: var(--brand-dark);
+}
+
+.hero-controls {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 28px;
+  width: min(var(--container), calc(100% - 32px));
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.slide-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.slide-dot {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+}
+
+.slide-dot.is-active {
+  width: 34px;
+  background: #fff;
+}
+
+.slide-arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.slide-arrow {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+section {
+  padding: 86px 0;
+}
+
+.section-title {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+}
+
+.section-text {
+  margin: 0 0 36px;
+  color: var(--muted);
+  max-width: 680px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.tab {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.tab.active,
+.tab:hover {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: #fff;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.menu-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+}
+
+.menu-card.is-hidden {
+  display: none;
+}
+
+.menu-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.menu-card-content {
+  padding: 20px;
+}
+
+.menu-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.menu-card p {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.price {
+  display: inline-flex;
+  font-weight: 900;
+  color: var(--brand);
+  font-size: 1.15rem;
+}
+
+.about {
+  background: var(--surface-soft);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.about-image {
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.about-image img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  transform: translateY(var(--parallax-y, 0));
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.info-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.info-card h3 {
+  margin: 0 0 8px;
+}
+
+.info-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.contact {
+  background: #241713;
+  color: #fff;
+}
+
+.contact .section-text {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.contact-card {
+  padding: 28px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.contact-card p {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.site-footer {
+  padding: 30px 0;
+  background: #170d0a;
+  color: rgba(255, 255, 255, 0.68);
+  text-align: center;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease var(--reveal-delay, 0ms),
+    transform 0.55s ease var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-parallax] {
+  transform: translateY(var(--parallax-y, 0));
+  transition: transform 0.08s linear;
+}
+
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    top: 86px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  .nav-open .site-nav {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 13px 12px;
+  }
+
+  .hero,
+  .hero-content {
+    min-height: 600px;
+  }
+
+  .menu-grid,
+  .about-grid,
+  .contact-grid,
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image img {
+    height: 360px;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    width: min(100% - 24px, var(--container));
+  }
+
+  .hero,
+  .hero-content {
+    min-height: 560px;
+  }
+
+  section {
+    padding: 64px 0;
+  }
+
+  .hero-controls {
+    bottom: 18px;
+  }
+
+  .slide-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu-card img {
+    height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-parallax] {
+    transform: none;
+  }
+}
+```<script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/296-20965d7d607b213c.js" defer="defer"></script>
 <script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/96232-069a02c82c8693ee.js" defer="defer"></script>
 <script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/57131-79aa62319c40af83.js" defer="defer"></script>
 <script crossorigin="anonymous" type="module" src="https://github.githubassets.com/assets/816-774d14a8cd9b309c.js" defer="defer"></script>
