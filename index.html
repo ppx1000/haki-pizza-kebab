@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Haki's Kebab - Kebab, Schnitzel und Pizza in Wien</title>
+    <meta
+      name="description"
+      content="Haki's Kebab in Wien: frischer Kebab, Dürüm, Schnitzel, Pizza, Pide, Boxen, Teller, Salate und Getränke."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#start" aria-label="Haki's Kebab Startseite">
+        <span class="brand-mark" aria-hidden="true">HK</span>
+        <span class="brand-text">
+          Haki's
+          <small>Kebab · Schnitzel · Pizza</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Navigation öffnen" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <a href="#speisekarte">Speisekarte</a>
+        <a href="#menues">Menüs</a>
+        <a href="#standort">Standort</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="start" aria-label="Startbereich">
+        <div class="hero-slideshow" aria-label="Bild-Slideshow">
+          <img
+            class="hero-slide is-active"
+            src="assets/hakis-hero-food.png"
+            alt="Frischer Kebab, Pizza und Pommes bei Haki's"
+            data-parallax="0.18"
+          />
+          <img
+            class="hero-slide"
+            src="assets/hakis-kiosk.png"
+            alt="Schwarzer Kebab-Kiosk im Stil von Haki's"
+            data-parallax="0.18"
+          />
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content reveal">
+          <p class="eyebrow">Hetzendorf · täglich frisch</p>
+          <h1>Haki's Kebab</h1>
+          <p class="lead">
+            Frischer Kebab, knusprige Schnitzel, heiße Pizza und Pide. Komm vorbei, bestell dir
+            etwas Gutes und nimm den Duft vom Grill gleich mit.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#speisekarte">Speisekarte ansehen</a>
+            <a class="button secondary" href="tel:+4368864247477">Jetzt anrufen</a>
+          </div>
+        </div>
+
+        <div class="slideshow-controls" aria-label="Slideshow steuern">
+          <button class="slide-arrow" type="button" data-slide-direction="-1" aria-label="Vorheriges Bild">‹</button>
+          <div class="slide-dots" aria-label="Bild auswählen">
+            <button class="slide-dot is-active" type="button" data-slide-to="0" aria-label="Bild 1 anzeigen"></button>
+            <button class="slide-dot" type="button" data-slide-to="1" aria-label="Bild 2 anzeigen"></button>
+          </div>
+          <button class="slide-arrow" type="button" data-slide-direction="1" aria-label="Nächstes Bild">›</button>
+        </div>
+      </section>
+
+      <section class="quick-info" aria-label="Kurzinfo">
+        <article class="reveal">
+          <span>Adresse</span>
+          <strong>Hetzendorfer Str. 1, 1120 Wien</strong>
+        </article>
+        <article class="reveal">
+          <span>Telefon</span>
+          <strong>0688 64 24 74 77</strong>
+        </article>
+        <article class="reveal">
+          <span>Öffnungszeiten</span>
+          <strong>Mo - So · 09:00 - 23:00 Uhr</strong>
+        </article>
+      </section>
+
+      <section class="intro-section" id="standort">
+        <div class="intro-copy reveal">
+          <p class="eyebrow">Vor Ort genießen</p>
+          <h2>Heiß vom Grill. Schnell in der Hand. Genau richtig.</h2>
+          <p>
+            Schau spontan vorbei, hol dir deinen Lieblingskebab oder nimm eine frische Pizza mit.
+            Bei Haki's bekommst du ehrliche Imbissküche, freundlich serviert und täglich frisch
+            zubereitet.
+          </p>
+          <dl class="label-list" aria-label="Angebot">
+            <div>
+              <dt>Spezialität</dt>
+              <dd>Kebab, Dürüm, Schnitzel, Pizza und Pide</dd>
+            </div>
+            <div>
+              <dt>Service</dt>
+              <dd>Zum Mitnehmen oder direkt vor Ort bestellen</dd>
+            </div>
+          </dl>
+        </div>
+        <figure class="image-panel reveal">
+          <img src="assets/hakis-kiosk.png" alt="Haki's Kiosk mit schwarzer Fassade" data-parallax="0.08" />
+          <figcaption>Haki's Kebab · Hetzendorfer Str. 1</figcaption>
+        </figure>
+      </section>
+
+      <section class="menu-section" id="speisekarte">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Speisekarte</p>
+          <h2>Such dir aus, worauf du gerade Lust hast.</h2>
+          <p>
+            Klassiker vom Spieß, knusprige Schnitzel, Pizza, Pide und kalte Getränke. Die Preise
+            sind übersichtlich gesetzt, damit du schnell findest, was passt.
+          </p>
+        </div>
+
+        <div class="menu-tabs reveal" aria-label="Speisekarte filtern">
+          <button class="tab is-active" type="button" data-category="all">Alle</button>
+          <button class="tab" type="button" data-category="kebab">Kebab</button>
+          <button class="tab" type="button" data-category="pizza">Pizza</button>
+          <button class="tab" type="button" data-category="pide">Pide</button>
+          <button class="tab" type="button" data-category="extras">Extras</button>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-card reveal" data-category="kebab">
+            <h3>Kebab</h3>
+            <ul class="price-list">
+              <li><span>Hühner Kebab</span><strong>4,50 €</strong></li>
+              <li><span>Yaprak Kebab</span><strong>5,00 €</strong></li>
+              <li><span>Gemischtes Kebab</span><strong>5,50 €</strong></li>
+              <li><span>Falafel Kebab</span><strong>4,50 €</strong></li>
+              <li><span>Schnitzel Kebab</span><strong>4,50 €</strong></li>
+              <li><span>Vegetarisch Kebab</span><strong>4,00 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal" data-category="kebab">
+            <h3>Dürüm & Wraps</h3>
+            <ul class="price-list">
+              <li><span>Hühner Dürüm</span><strong>5,00 €</strong></li>
+              <li><span>Yaprak Dürüm</span><strong>5,50 €</strong></li>
+              <li><span>Gemischtes Dürüm</span><strong>6,00 €</strong></li>
+              <li><span>Falafel Dürüm</span><strong>5,00 €</strong></li>
+              <li><span>Schnitzel Dürüm</span><strong>5,00 €</strong></li>
+              <li><span>Vegetarisch Dürüm</span><strong>4,50 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal" data-category="kebab">
+            <h3>Teller</h3>
+            <ul class="price-list">
+              <li><span>Hühner Teller</span><strong>8,00 €</strong></li>
+              <li><span>Yaprak Teller</span><strong>9,00 €</strong></li>
+              <li><span>Gemischtes Teller</span><strong>10,00 €</strong></li>
+              <li><span>Falafel Teller</span><strong>7,50 €</strong></li>
+              <li><span>Schnitzel Teller</span><strong>8,50 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal" data-category="kebab">
+            <h3>Box</h3>
+            <p class="card-note">Mit Reis, Pommes oder Wedges.</p>
+            <ul class="price-list">
+              <li><span>Hühner Box</span><strong>5,00 € / 6,00 €</strong></li>
+              <li><span>Yaprak Box</span><strong>5,50 € / 6,50 €</strong></li>
+              <li><span>Gemischtes Box</span><strong>6,00 € / 7,00 €</strong></li>
+              <li><span>Falafel Box</span><strong>5,00 € / 6,00 €</strong></li>
+              <li><span>Schnitzel Box</span><strong>5,50 € / 6,50 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-card wide reveal" data-category="pizza">
+            <h3>Pizza</h3>
+            <ul class="price-list two-column">
+              <li><span>Margherita</span><strong>7,50 €</strong></li>
+              <li><span>Funghi</span><strong>8,00 €</strong></li>
+              <li><span>Cardinale</span><strong>8,00 €</strong></li>
+              <li><span>Salami</span><strong>8,00 €</strong></li>
+              <li><span>Toscana</span><strong>8,00 €</strong></li>
+              <li><span>Hawaii</span><strong>8,00 €</strong></li>
+              <li><span>Milano</span><strong>9,00 €</strong></li>
+              <li><span>Al Capone</span><strong>8,50 €</strong></li>
+              <li><span>Haki's Pizza</span><strong>8,50 €</strong></li>
+              <li><span>Kebab Pizza</span><strong>8,50 €</strong></li>
+              <li><span>Vegetaria</span><strong>8,50 €</strong></li>
+              <li><span>Quattro Stagioni</span><strong>9,00 €</strong></li>
+              <li><span>Mozzarella Pizza</span><strong>8,00 €</strong></li>
+              <li><span>Wunschpizza</span><strong>8,50 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal" data-category="pide">
+            <h3>Pide</h3>
+            <ul class="price-list">
+              <li><span>Käse Pide</span><strong>5,00 €</strong></li>
+              <li><span>Gemüse Pide</span><strong>5,00 €</strong></li>
+              <li><span>Salami Pide</span><strong>5,00 €</strong></li>
+              <li><span>Spinat Pide</span><strong>5,00 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal" data-category="extras">
+            <h3>Salat</h3>
+            <ul class="price-list">
+              <li><span>Gemischter Salat</span><strong>3,50 €</strong></li>
+              <li><span>Thunfisch Salat</span><strong>4,00 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal" data-category="extras">
+            <h3>Getränke</h3>
+            <ul class="price-list">
+              <li><span>Alle Flaschen 0,5 l</span><strong>2,20 €</strong></li>
+              <li><span>Mineralwasser 0,5 l</span><strong>1,80 €</strong></li>
+              <li><span>Alle Dosen 0,33 l</span><strong>1,80 €</strong></li>
+              <li><span>Red Bull 0,25 l</span><strong>2,30 €</strong></li>
+              <li><span>Ayran 0,25 l</span><strong>1,80 €</strong></li>
+              <li><span>Wild Dragon 0,25 l</span><strong>2,30 €</strong></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="deals-section" id="menues">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Menüs</p>
+          <h2>Wenn es schnell gehen soll: Menü nehmen.</h2>
+          <p>Mit Getränk, Pommes oder Reis wird aus deinem Favoriten direkt ein ganzes Essen.</p>
+        </div>
+        <div class="deal-grid">
+          <article class="deal-card reveal">
+            <span>1</span>
+            <h3>Döner Kebab Menü</h3>
+            <p>Mit Getränk und Pommes.</p>
+            <strong>5,80 €</strong>
+          </article>
+          <article class="deal-card reveal">
+            <span>2</span>
+            <h3>Döner Kebab Menü</h3>
+            <p>Mit Getränk und Reis.</p>
+            <strong>7,00 €</strong>
+          </article>
+          <article class="deal-card reveal">
+            <span>3</span>
+            <h3>Dürüm Menü</h3>
+            <p>Mit Getränk und Pommes.</p>
+            <strong>6,80 €</strong>
+          </article>
+          <article class="deal-card reveal">
+            <span>4</span>
+            <h3>Dürüm Menü</h3>
+            <p>Mit Getränk und Pommes.</p>
+            <strong>7,50 €</strong>
+          </article>
+          <article class="deal-card reveal">
+            <span>5</span>
+            <h3>Schnitzel Semmel</h3>
+            <p>Mit Getränk und Pommes.</p>
+            <strong>5,80 €</strong>
+          </article>
+          <article class="deal-card reveal">
+            <span>9</span>
+            <h3>Chicken Menü</h3>
+            <p>Mit Getränk und Pommes.</p>
+            <strong>5,00 €</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-section" id="kontakt">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Kontakt</p>
+          <h2>Komm vorbei. Wir machen dir etwas Frisches.</h2>
+          <p>Ruf an oder schau direkt vorbei. Wir freuen uns auf dich.</p>
+        </div>
+        <div class="contact-card reveal">
+          <span>Telefon</span>
+          <a href="tel:+4368864247477">0688 64 24 74 77</a>
+          <span>Adresse</span>
+          <p>Hetzendorfer Str. 1, 1120 Wien</p>
+          <span>Öffnungszeiten</span>
+          <p>Mo - So · 09:00 - 23:00 Uhr</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <strong>Haki's Kebab</strong>
+      <span>Kebab · Schnitzel · Pizza · Hetzendorfer Str. 1 · 1120 Wien</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
