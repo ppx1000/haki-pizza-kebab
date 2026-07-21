@@ -62,7 +62,11 @@
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#speisekarte">Speisekarte ansehen</a>
-            <button class="button secondary" type="button" data-open-order>Jetzt bestellen</button>
+          </div>
+          <div class="hero-order-callout">
+            <span>Neu: bestellen und liefern lassen</span>
+            <strong>Lieferung in 1120 Wien</strong>
+            <button class="button primary" type="button" data-open-order>Bestellung starten</button>
           </div>
         </div>
 
@@ -93,12 +97,12 @@
 
       <section class="intro-section" id="standort">
         <div class="intro-copy reveal">
-          <p class="eyebrow">Vor Ort genießen</p>
+          <p class="eyebrow">Vor Ort, Abholung oder Lieferung</p>
           <h2>Heiß vom Grill. Schnell in der Hand. Genau richtig.</h2>
           <p>
-            Schau spontan vorbei, hol dir deinen Lieblingskebab oder nimm eine frische Pizza mit.
-            Bei Haki's bekommst du ehrliche Imbissküche, freundlich serviert und täglich frisch
-            zubereitet.
+            Schau spontan vorbei, hol dir deine Bestellung ab oder lass sie dir in 1120 Wien
+            liefern. Bei Haki's bekommst du ehrliche Imbissküche, freundlich serviert und täglich
+            frisch zubereitet.
           </p>
           <dl class="label-list" aria-label="Angebot">
             <div>
@@ -107,7 +111,7 @@
             </div>
             <div>
               <dt>Service</dt>
-              <dd>Zum Mitnehmen oder direkt vor Ort bestellen</dd>
+              <dd>Zum Mitnehmen, vor Ort bestellen oder liefern lassen</dd>
             </div>
           </dl>
         </div>
@@ -134,6 +138,11 @@
           <button class="tab" type="button" data-category="pide">Pide</button>
           <button class="tab" type="button" data-category="extras">Extras</button>
         </div>
+
+        <label class="menu-search reveal">
+          <span>Speisekarte durchsuchen</span>
+          <input data-menu-search type="search" placeholder="z.B. Salami, Kebab, Ayran" autocomplete="off" />
+        </label>
 
         <div class="menu-grid">
           <article class="menu-card reveal" data-category="kebab">
@@ -349,6 +358,10 @@
               <button class="order-tab" type="button" data-order-category="menues">Menüs</button>
               <button class="order-tab" type="button" data-order-category="extras">Extras</button>
             </div>
+            <label class="order-search">
+              <span>Bestellung durchsuchen</span>
+              <input data-order-search type="search" placeholder="z.B. Pizza, Dürüm, Menü" autocomplete="off" />
+            </label>
             <div class="order-product-list" data-order-products></div>
           </section>
 
@@ -394,7 +407,7 @@
                     name="customerAddress"
                     type="text"
                     autocomplete="street-address"
-                    placeholder="Straße, Hausnummer, PLZ, Ort"
+                    placeholder="Straße, Hausnummer, 1120 Wien"
                     data-delivery-address
                   />
                 </label>
