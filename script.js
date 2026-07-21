@@ -19,22 +19,48 @@ const orderTotal = document.querySelector("[data-order-total]");
 const orderForm = document.querySelector("[data-order-form]");
 const deliveryFields = document.querySelector("[data-delivery-fields]");
 const deliveryAddress = document.querySelector("[data-delivery-address]");
+const menuSearch = document.querySelector("[data-menu-search]");
+const orderSearch = document.querySelector("[data-order-search]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let activeSlide = 0;
 let slideshowTimer = null;
 let ticking = false;
+let activeCategory = "all";
+let activeOrderCategory = "all";
 const orderItems = new Map();
 const whatsappNumber = "4368864247477";
+const deliveryPostalCode = "1120";
+
+function normalizeText(value) {
+  return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
 function setCategory(category) {
+  activeCategory = category;
+
   tabs.forEach((tab) => {
     tab.classList.toggle("is-active", tab.dataset.category === category);
   });
 
+  applyMenuFilters();
+}
+
+function applyMenuFilters() {
+  const query = normalizeText(menuSearch?.value.trim() || "");
+
   menuCards.forEach((card) => {
-    const visible = category === "all" || card.dataset.category === category;
-    card.classList.toggle("is-hidden", !visible);
+    const categoryVisible = activeCategory === "all" || card.dataset.category === activeCategory;
+    let hasVisibleItem = false;
+
+    card.querySelectorAll(".price-list li").forEach((item) => {
+      const textVisible = !query || normalizeText(item.textContent).includes(query);
+      const visible = categoryVisible && textVisible;
+      item.classList.toggle("is-hidden", !visible);
+      hasVisibleItem = hasVisibleItem || visible;
+    });
+
+    card.classList.toggle("is-hidden", !categoryVisible || !hasVisibleItem);
   });
 }
 
@@ -190,13 +216,22 @@ function renderProducts() {
 }
 
 function setOrderCategory(category) {
+  activeOrderCategory = category;
+
   orderTabs.forEach((tab) => {
     tab.classList.toggle("is-active", tab.dataset.orderCategory === category);
   });
 
+  applyOrderFilters();
+}
+
+function applyOrderFilters() {
+  const query = normalizeText(orderSearch?.value.trim() || "");
+
   document.querySelectorAll(".order-product").forEach((product) => {
-    const visible = category === "all" || product.dataset.category === category;
-    product.classList.toggle("is-hidden", !visible);
+    const categoryVisible = activeOrderCategory === "all" || product.dataset.category === activeOrderCategory;
+    const textVisible = !query || normalizeText(product.textContent).includes(query);
+    product.classList.toggle("is-hidden", !(categoryVisible && textVisible));
   });
 }
 
@@ -232,7 +267,20 @@ function updateOrderType() {
 
   if (deliveryAddress) {
     deliveryAddress.required = isDelivery;
+    deliveryAddress.setCustomValidity("");
   }
+}
+
+function validateDeliveryArea() {
+  const selected = document.querySelector('input[name="orderType"]:checked')?.value;
+
+  if (!deliveryAddress || selected !== "Lieferung") {
+    return;
+  }
+
+  const address = deliveryAddress.value.trim();
+  const hasPostalCode = new RegExp(`(^|\\D)${deliveryPostalCode}(\\D|$)`).test(address);
+  deliveryAddress.setCustomValidity(hasPostalCode ? "" : "Lieferung ist nur im Liefergebiet 1120 möglich.");
 }
 
 function updateOrder() {
@@ -340,13 +388,28 @@ tabs.forEach((tab) => {
   tab.addEventListener("click", () => setCategory(tab.dataset.category));
 });
 
+if (menuSearch) {
+  menuSearch.addEventListener("input", applyMenuFilters);
+}
+
 orderTabs.forEach((tab) => {
   tab.addEventListener("click", () => setOrderCategory(tab.dataset.orderCategory));
 });
 
+if (orderSearch) {
+  orderSearch.addEventListener("input", applyOrderFilters);
+}
+
 document.querySelectorAll('input[name="orderType"]').forEach((input) => {
-  input.addEventListener("change", updateOrderType);
+  input.addEventListener("change", () => {
+    updateOrderType();
+    validateDeliveryArea();
+  });
 });
+
+if (deliveryAddress) {
+  deliveryAddress.addEventListener("input", validateDeliveryArea);
+}
 
 openOrderButtons.forEach((button) => {
   button.addEventListener("click", openOrderPanel);
@@ -381,6 +444,7 @@ if (orderForm) {
     }
 
     updateOrderType();
+    validateDeliveryArea();
 
     if (!orderForm.reportValidity()) {
       return;
@@ -462,6 +526,7 @@ if (!reduceMotion && parallaxItems.length) {
 
 renderProducts();
 setOrderCategory("all");
+applyMenuFilters();
 updateOrderType();
 showSlide(0);
 startSlideshow();
