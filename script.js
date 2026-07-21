@@ -306,16 +306,16 @@ function buildWhatsAppMessage(formData) {
   const address = formData.get("customerAddress")?.trim();
   const note = formData.get("customerNote")?.trim();
 
-  const lines = [
-    "Neue Bestellung bei Haki's Kebab:",
-    "",
-    `Art: ${orderType}`,
-    "Zahlung: Bar",
-    "",
-    ...items.map((item) => `${item.quantity}x ${item.name} - ${item.priceText}`),
-    "",
-    `Summe: ${orderTotal.textContent}`,
-  ];
+const lines = [
+  "Neue Bestellung bei Haki's Kebab:",
+  "",
+  `Art: ${orderType}`,
+  orderType === "Lieferung" ? "Zahlung: Bar" : "Zahlung: Bar oder Karte",
+  "",
+  ...items.map((item) => `${item.quantity}x ${item.name} - ${item.priceText}`),
+  "",
+  `Summe: ${orderTotal.textContent}`,
+];
 
   if (name) {
     lines.push(`Name: ${name}`);
