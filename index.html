@@ -31,6 +31,7 @@
         <a href="#menues">Menüs</a>
         <a href="#standort">Standort</a>
         <a href="#kontakt">Kontakt</a>
+        <button class="nav-order-button" type="button" data-open-order>Bestellung</button>
       </nav>
     </header>
 
@@ -181,6 +182,7 @@
               <li><span>Schnitzel Box</span><strong>5,50 € / 6,50 €</strong></li>
             </ul>
           </article>
+
 <article class="menu-card wide reveal" data-category="pizza">
   <h3>Pizza</h3>
   <ul class="price-list two-column">
@@ -318,6 +320,53 @@
         </div>
       </section>
     </main>
+
+    <button class="cart-fab" type="button" data-open-order aria-label="Bestellung öffnen">
+      <span>Bestellung</span>
+      <strong data-cart-count>0</strong>
+    </button>
+
+    <aside class="order-panel" aria-label="Bestellung" aria-hidden="true">
+      <div class="order-backdrop" data-close-order></div>
+      <div class="order-drawer" role="dialog" aria-modal="true" aria-labelledby="order-title">
+        <div class="order-head">
+          <div>
+            <span class="eyebrow">Zum Mitnehmen</span>
+            <h2 id="order-title">Deine Bestellung</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-order aria-label="Bestellung schließen">×</button>
+        </div>
+
+        <div class="order-empty" data-order-empty>
+          Wähle etwas aus der Speisekarte aus.
+        </div>
+
+        <ul class="order-items" data-order-items></ul>
+
+        <form class="order-form" data-order-form>
+          <label>
+            Name
+            <input name="customerName" type="text" autocomplete="name" placeholder="Dein Name" />
+          </label>
+          <label>
+            Telefon
+            <input name="customerPhone" type="tel" autocomplete="tel" placeholder="Telefonnummer" />
+          </label>
+          <label>
+            Hinweis
+            <textarea name="customerNote" rows="3" placeholder="z.B. ohne Zwiebel, Abholung um 18:30"></textarea>
+          </label>
+
+          <div class="order-total">
+            <span>Summe</span>
+            <strong data-order-total>0,00 €</strong>
+          </div>
+
+          <button class="button primary" type="submit">Per WhatsApp senden</button>
+          <a class="button secondary" href="tel:+4368864247477">Anrufen</a>
+        </form>
+      </div>
+    </aside>
 
     <footer class="footer">
       <strong>Haki's Kebab</strong>
