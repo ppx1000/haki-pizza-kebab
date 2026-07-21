@@ -796,6 +796,15 @@ h3 {
   font-weight: 900;
 }
 
+.delivery-fields {
+  display: grid;
+  gap: 14px;
+}
+
+.delivery-fields[hidden] {
+  display: none;
+}
+
 .order-choice {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -835,11 +844,6 @@ h3 {
   background: rgba(244, 196, 93, 0.08);
   color: var(--gold);
   font-weight: 800;
-}
-
-.delivery-fields {
-  display: grid;
-  gap: 14px;
 }
 
 .order-form {
