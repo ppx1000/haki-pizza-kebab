@@ -1137,3 +1137,6 @@ h3 {
     min-height: 42vh;
   }
 }
+.delivery-fields[hidden] {
+  display: none !important;
+}
