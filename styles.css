@@ -245,6 +245,41 @@ h3 {
   gap: 12px;
 }
 
+.hero-order-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 18px;
+  align-items: center;
+  width: min(720px, 100%);
+  margin-top: 22px;
+  border: 1px solid rgba(41, 151, 255, 0.45);
+  border-radius: 22px;
+  padding: 18px;
+  background: rgba(6, 18, 32, 0.84);
+  box-shadow: 0 22px 60px rgba(41, 151, 255, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.hero-order-callout span {
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.hero-order-callout strong {
+  grid-column: 1;
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1;
+}
+
+.hero-order-callout .button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  white-space: nowrap;
+}
+
 .button,
 .tab,
 .order-tab {
@@ -476,6 +511,35 @@ h3 {
   backdrop-filter: saturate(180%) blur(16px);
 }
 
+.menu-search {
+  display: grid;
+  gap: 8px;
+  max-width: 520px;
+  margin: -10px 0 28px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.menu-search input,
+.order-search input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font: inherit;
+  font-weight: 800;
+  outline: none;
+}
+
+.menu-search input:focus,
+.order-search input:focus {
+  border-color: rgba(41, 151, 255, 0.7);
+  box-shadow: 0 0 0 4px rgba(41, 151, 255, 0.16);
+}
+
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -664,6 +728,16 @@ h3 {
   padding: 14px;
   background: rgba(8, 8, 10, 0.92);
   backdrop-filter: blur(14px);
+}
+
+.order-search {
+  display: grid;
+  gap: 8px;
+  padding: 0 14px 14px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+  background: rgba(8, 8, 10, 0.92);
 }
 
 .order-product-list {
@@ -1065,6 +1139,17 @@ h3 {
     flex-direction: column;
   }
 
+  .hero-order-callout {
+    grid-template-columns: 1fr;
+    border-radius: 18px;
+  }
+
+  .hero-order-callout .button {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+  }
+
   .button,
   .tab {
     width: 100%;
@@ -1137,6 +1222,7 @@ h3 {
     min-height: 42vh;
   }
 }
+
 .delivery-fields[hidden] {
   display: none !important;
 }
