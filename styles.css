@@ -519,6 +519,19 @@ h3 {
   overflow-wrap: anywhere;
 }
 
+.price-list .item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.price-list .item-desc {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.68);
+  font-weight: 400;
+}
+
 .price-list strong,
 .deal-card strong,
 .contact-card a {
