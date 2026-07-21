@@ -17,6 +17,8 @@ const orderItemsList = document.querySelector("[data-order-items]");
 const orderEmpty = document.querySelector("[data-order-empty]");
 const orderTotal = document.querySelector("[data-order-total]");
 const orderForm = document.querySelector("[data-order-form]");
+const deliveryFields = document.querySelector("[data-delivery-fields]");
+const deliveryAddress = document.querySelector("[data-delivery-address]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let activeSlide = 0;
@@ -24,76 +26,6 @@ let slideshowTimer = null;
 let ticking = false;
 const orderItems = new Map();
 const whatsappNumber = "4368864247477";
-
-const products = [
-  { id: "huehner-kebab", category: "kebab", name: "Hühner Kebab", priceText: "5,00 €", price: 5 },
-  { id: "yaprak-kebab", category: "kebab", name: "Yaprak Kebab", priceText: "6,00 €", price: 6 },
-  { id: "gemischtes-kebab", category: "kebab", name: "Gemischtes Kebab", priceText: "6,50 €", price: 6.5 },
-  { id: "falafel-kebab", category: "kebab", name: "Falafel Kebab", priceText: "5,00 €", price: 5 },
-  { id: "schnitzel-kebab", category: "kebab", name: "Schnitzel Kebab", priceText: "5,00 €", price: 5 },
-  { id: "vegetarisch-kebab", category: "kebab", name: "Vegetarisch Kebab", priceText: "4,00 €", price: 4 },
-  { id: "huehner-dueruem", category: "kebab", name: "Hühner Dürüm", priceText: "5,50 €", price: 5.5 },
-  { id: "yaprak-dueruem", category: "kebab", name: "Yaprak Dürüm", priceText: "6,50 €", price: 6.5 },
-  { id: "gemischtes-dueruem", category: "kebab", name: "Gemischtes Dürüm", priceText: "7,00 €", price: 7 },
-  { id: "falafel-dueruem", category: "kebab", name: "Falafel Dürüm", priceText: "5,50 €", price: 5.5 },
-  { id: "schnitzel-dueruem", category: "kebab", name: "Schnitzel Dürüm", priceText: "6,00 €", price: 6 },
-  { id: "vegetarisch-dueruem", category: "kebab", name: "Vegetarisch Dürüm", priceText: "5,00 €", price: 5 },
-  { id: "huehner-teller", category: "kebab", name: "Hühner Teller", priceText: "8,00 €", price: 8 },
-  { id: "yaprak-teller", category: "kebab", name: "Yaprak Teller", priceText: "9,00 €", price: 9 },
-  { id: "gemischtes-teller", category: "kebab", name: "Gemischtes Teller", priceText: "10,00 €", price: 10 },
-  { id: "falafel-teller", category: "kebab", name: "Falafel Teller", priceText: "7,50 €", price: 7.5 },
-  { id: "schnitzel-teller", category: "kebab", name: "Schnitzel Teller", priceText: "8,50 €", price: 8.5 },
-  { id: "huehner-box-klein", category: "kebab", name: "Hühner Box klein", desc: "Mit Reis, Pommes oder Wedges", priceText: "5,00 €", price: 5 },
-  { id: "huehner-box-gross", category: "kebab", name: "Hühner Box groß", desc: "Mit Reis, Pommes oder Wedges", priceText: "6,00 €", price: 6 },
-  { id: "yaprak-box-klein", category: "kebab", name: "Yaprak Box klein", desc: "Mit Reis, Pommes oder Wedges", priceText: "6,00 €", price: 6 },
-  { id: "yaprak-box-gross", category: "kebab", name: "Yaprak Box groß", desc: "Mit Reis, Pommes oder Wedges", priceText: "7,00 €", price: 7 },
-  { id: "gemischtes-box-klein", category: "kebab", name: "Gemischtes Box klein", desc: "Mit Reis, Pommes oder Wedges", priceText: "6,50 €", price: 6.5 },
-  { id: "gemischtes-box-gross", category: "kebab", name: "Gemischtes Box groß", desc: "Mit Reis, Pommes oder Wedges", priceText: "7,50 €", price: 7.5 },
-  { id: "falafel-box-klein", category: "kebab", name: "Falafel Box klein", desc: "Mit Reis, Pommes oder Wedges", priceText: "5,00 €", price: 5 },
-  { id: "falafel-box-gross", category: "kebab", name: "Falafel Box groß", desc: "Mit Reis, Pommes oder Wedges", priceText: "6,00 €", price: 6 },
-  { id: "schnitzel-box-klein", category: "kebab", name: "Schnitzel Box klein", desc: "Mit Reis, Pommes oder Wedges", priceText: "5,50 €", price: 5.5 },
-  { id: "schnitzel-box-gross", category: "kebab", name: "Schnitzel Box groß", desc: "Mit Reis, Pommes oder Wedges", priceText: "6,50 €", price: 6.5 },
-
-  { id: "margherita", category: "pizza", name: "Margherita", desc: "Tomatensauce, Käse", priceText: "7,50 €", price: 7.5 },
-  { id: "funghi", category: "pizza", name: "Funghi", desc: "Tomatensauce, Käse, Champignons", priceText: "8,00 €", price: 8 },
-  { id: "cardinale", category: "pizza", name: "Cardinale", desc: "Tomatensauce, Käse, Schinken", priceText: "8,00 €", price: 8 },
-  { id: "salami", category: "pizza", name: "Salami", desc: "Tomatensauce, Käse, Salami", priceText: "8,00 €", price: 8 },
-  { id: "fiorentina", category: "pizza", name: "Fiorentina", desc: "Tomaten, Käse, Schinken, Champignons", priceText: "8,00 €", price: 8 },
-  { id: "toscana", category: "pizza", name: "Toscana", desc: "Tomatensauce, Käse, Schinken, Mais, Zwiebeln", priceText: "8,00 €", price: 8 },
-  { id: "hawaii", category: "pizza", name: "Hawaii", desc: "Tomatensauce, Käse, Schinken, Ananas", priceText: "8,00 €", price: 8 },
-  { id: "milano", category: "pizza", name: "Milano", desc: "Tomatensauce, Käse, Salami, Champignons, Mais", priceText: "8,00 €", price: 8 },
-  { id: "al-tonno", category: "pizza", name: "Al Tonno", desc: "Tomatensauce, Käse, Thunfisch, Oliven, rote Zwiebel", priceText: "8,50 €", price: 8.5 },
-  { id: "diavolo", category: "pizza", name: "Diavolo", desc: "Tomatensauce, Käse, Schinken, Pfefferoni, Zwiebel", priceText: "8,00 €", price: 8 },
-  { id: "capriccioso", category: "pizza", name: "Capriccioso", desc: "Tomatensauce, Käse, Schinken, Mais, Champignons, Oliven", priceText: "8,50 €", price: 8.5 },
-  { id: "provinciale", category: "pizza", name: "Provinciale", desc: "Tomaten, Käse, Schinken, Mais, milde Pfefferoni", priceText: "8,50 €", price: 8.5 },
-  { id: "spinaci", category: "pizza", name: "Spinaci", desc: "Tomatensauce, Käse, Spinat, Schafskäse", priceText: "8,00 €", price: 8 },
-  { id: "rusticana", category: "pizza", name: "Rusticana", desc: "Tomatensauce, Käse, Schinken, Ei, Champignons", priceText: "8,50 €", price: 8.5 },
-  { id: "palermo", category: "pizza", name: "Palermo", desc: "Tomatensauce, Käse, Schinken, Champignons, Artischocken", priceText: "8,50 €", price: 8.5 },
-  { id: "mozzarella-pizza", category: "pizza", name: "Mozzarella Pizza", desc: "Tomatensauce, Käse, Mozzarella, frische Tomatenscheibe", priceText: "8,00 €", price: 8 },
-  { id: "quattro-formaggi", category: "pizza", name: "Quattro Formaggi", desc: "Tomatensauce, Mozzarella, Gorgonzola, Gouda, Schafkäse", priceText: "9,00 €", price: 9 },
-  { id: "vegetaria", category: "pizza", name: "Vegetaria", desc: "Tomatensauce, Käse, Paprika, Melanzani, Zucchini, Mais", priceText: "8,50 €", price: 8.5 },
-  { id: "naturale", category: "pizza", name: "Naturale", desc: "Tomatensauce, Käse, Spinat, rote Zwiebeln, Mais", priceText: "8,50 €", price: 8.5 },
-  { id: "kebab-pizza", category: "pizza", name: "Kebab Pizza", desc: "Tomatensauce, Käse, Hühner Kebabfleisch", priceText: "8,50 €", price: 8.5 },
-  { id: "hakis-pizza", category: "pizza", name: "Haki's Pizza", desc: "Tomatensauce, Käse, Kebabfleisch, Salami, Mais, Paprika", priceText: "8,50 €", price: 8.5 },
-  { id: "al-capone", category: "pizza", name: "Al Capone", desc: "Tomatensauce, Käse, Schinken, Salami, scharfer Pfefferoni", priceText: "8,50 €", price: 8.5 },
-  { id: "pizza-mafia", category: "pizza", name: "Pizza Mafia", desc: "Tomatensauce, Käse, Schinken, Champignons, Zwiebel, scharfer Pfefferoni", priceText: "8,50 €", price: 8.5 },
-  { id: "melanzani", category: "pizza", name: "Melanzani", desc: "Tomatensauce, Käse, Melanzani, Paprika", priceText: "8,00 €", price: 8 },
-  { id: "kinder-pizza", category: "pizza", name: "Kinder Pizza", priceText: "5,00 €", price: 5 },
-  { id: "pizza-stangerl", category: "pizza", name: "Pizza Stangerl", desc: "Verschiedene Sorte nach Wahl", priceText: "4,50 €", price: 4.5 },
-
-  { id: "kaese-pide", category: "pide", name: "Käse Pide", desc: "mit Käse", priceText: "5,00 €", price: 5 },
-  { id: "thunfisch-pide", category: "pide", name: "Thunfisch Pide", desc: "mit Käse, Thunfisch, Zwiebel", priceText: "5,00 €", price: 5 },
-  { id: "salami-pide", category: "pide", name: "Salami Pide", desc: "mit Käse, Salami und Mais", priceText: "5,00 €", price: 5 },
-  { id: "spinat-pide", category: "pide", name: "Spinat Pide", desc: "mit Spinat, Schafskäse, Mais", priceText: "5,00 €", price: 5 },
-
-  { id: "gemischter-salat", category: "extras", name: "Gemischter Salat", priceText: "3,50 €", price: 3.5 },
-  { id: "thunfisch-salat", category: "extras", name: "Thunfisch Salat", priceText: "4,00 €", price: 4 },
-  { id: "mineralwasser", category: "extras", name: "Mineralwasser 0,5 l", priceText: "2,00 €", price: 2 },
-  { id: "dosen", category: "extras", name: "Alle Dosen 0,33 l", priceText: "2,20 €", price: 2.2 },
-  { id: "red-bull", category: "extras", name: "Red Bull 0,25 l", priceText: "3,00 €", price: 3 },
-  { id: "ayran", category: "extras", name: "Ayran 0,25 l", priceText: "2,00 €", price: 2 },
-  { id: "wild-dragon", category: "extras", name: "Wild Dragon 0,25 l", priceText: "2,50 €", price: 2.5 },
-];
 
 function setCategory(category) {
   tabs.forEach((tab) => {
@@ -160,15 +92,66 @@ function formatEuro(value) {
   return `${value.toFixed(2).replace(".", ",")} €`;
 }
 
-function setOrderCategory(category) {
-  orderTabs.forEach((tab) => {
-    tab.classList.toggle("is-active", tab.dataset.orderCategory === category);
+function parsePrice(priceText) {
+  const match = priceText.match(/(\d+),(\d+)/);
+  return match ? Number(`${match[1]}.${match[2]}`) : 0;
+}
+
+function cleanNameFromSpan(span) {
+  const clone = span.cloneNode(true);
+  clone.querySelectorAll(".item-desc").forEach((desc) => desc.remove());
+  return clone.textContent.trim();
+}
+
+function getProductsFromPage() {
+  const products = [];
+
+  document.querySelectorAll(".menu-card").forEach((card) => {
+    const category = card.dataset.category || "extras";
+
+    card.querySelectorAll(".price-list li").forEach((item, index) => {
+      const nameSpan = item.querySelector("span");
+      const priceEl = item.querySelector("strong");
+
+      if (!nameSpan || !priceEl) {
+        return;
+      }
+
+      const desc = item.querySelector(".item-desc")?.textContent.trim() || "";
+      const priceText = priceEl.textContent.trim();
+      const name = cleanNameFromSpan(nameSpan);
+
+      products.push({
+        id: `${category}-${name}-${priceText}-${index}`,
+        category,
+        name,
+        desc,
+        priceText,
+        price: parsePrice(priceText),
+      });
+    });
   });
 
-  document.querySelectorAll(".order-product").forEach((product) => {
-    const visible = category === "all" || product.dataset.category === category;
-    product.classList.toggle("is-hidden", !visible);
+  document.querySelectorAll("#menues .deal-card").forEach((card, index) => {
+    const name = card.querySelector("h3")?.textContent.trim();
+    const desc = card.querySelector("p")?.textContent.trim() || "";
+    const priceText = card.querySelector("strong")?.textContent.trim();
+
+    if (!name || !priceText) {
+      return;
+    }
+
+    products.push({
+      id: `menues-${name}-${priceText}-${index}`,
+      category: "menues",
+      name,
+      desc,
+      priceText,
+      price: parsePrice(priceText),
+    });
   });
+
+  return products;
 }
 
 function renderProducts() {
@@ -178,7 +161,7 @@ function renderProducts() {
 
   orderProducts.innerHTML = "";
 
-  products.forEach((product) => {
+  getProductsFromPage().forEach((product) => {
     const item = document.createElement("article");
     item.className = "order-product";
     item.dataset.category = product.category;
@@ -189,7 +172,7 @@ function renderProducts() {
         ${product.desc ? '<span class="order-product-desc"></span>' : ""}
         <span class="order-product-price"></span>
       </div>
-      <button class="order-add-button" type="button" aria-label="${product.name} hinzufügen">+</button>
+      <button class="order-add-button" type="button">+</button>
     `;
 
     item.querySelector(".order-product-name").textContent = product.name;
@@ -199,11 +182,21 @@ function renderProducts() {
       item.querySelector(".order-product-desc").textContent = product.desc;
     }
 
-    item.querySelector(".order-add-button").addEventListener("click", () => {
-      addOrderItem(product);
-    });
+    item.querySelector(".order-add-button").setAttribute("aria-label", `${product.name} hinzufügen`);
+    item.querySelector(".order-add-button").addEventListener("click", () => addOrderItem(product));
 
     orderProducts.append(item);
+  });
+}
+
+function setOrderCategory(category) {
+  orderTabs.forEach((tab) => {
+    tab.classList.toggle("is-active", tab.dataset.orderCategory === category);
+  });
+
+  document.querySelectorAll(".order-product").forEach((product) => {
+    const visible = category === "all" || product.dataset.category === category;
+    product.classList.toggle("is-hidden", !visible);
   });
 }
 
@@ -229,6 +222,19 @@ function closeOrderPanel() {
   document.body.classList.remove("order-open");
 }
 
+function updateOrderType() {
+  const selected = document.querySelector('input[name="orderType"]:checked')?.value;
+  const isDelivery = selected === "Lieferung";
+
+  if (deliveryFields) {
+    deliveryFields.hidden = !isDelivery;
+  }
+
+  if (deliveryAddress) {
+    deliveryAddress.required = isDelivery;
+  }
+}
+
 function updateOrder() {
   if (!orderItemsList || !orderTotal || !orderEmpty) {
     return;
@@ -249,14 +255,17 @@ function updateOrder() {
         <span class="order-item-price"></span>
       </div>
       <div class="order-qty">
-        <button class="qty-button" type="button" data-order-minus="${item.id}" aria-label="${item.name} entfernen">−</button>
+        <button class="qty-button" type="button" data-order-minus="${item.id}">−</button>
         <span>${item.quantity}</span>
-        <button class="qty-button" type="button" data-order-plus="${item.id}" aria-label="${item.name} hinzufügen">+</button>
+        <button class="qty-button" type="button" data-order-plus="${item.id}">+</button>
       </div>
     `;
 
     row.querySelector(".order-item-name").textContent = item.name;
     row.querySelector(".order-item-price").textContent = `${item.quantity} × ${item.priceText}`;
+    row.querySelector("[data-order-minus]").setAttribute("aria-label", `${item.name} entfernen`);
+    row.querySelector("[data-order-plus]").setAttribute("aria-label", `${item.name} hinzufügen`);
+
     orderItemsList.append(row);
   });
 }
@@ -291,17 +300,22 @@ function changeOrderQuantity(id, direction) {
 
 function buildWhatsAppMessage(formData) {
   const items = Array.from(orderItems.values());
+  const orderType = formData.get("orderType") || "Abholung";
+  const name = formData.get("customerName")?.trim();
+  const phone = formData.get("customerPhone")?.trim();
+  const address = formData.get("customerAddress")?.trim();
+  const note = formData.get("customerNote")?.trim();
+
   const lines = [
     "Neue Bestellung bei Haki's Kebab:",
+    "",
+    `Art: ${orderType}`,
+    "Zahlung: Bar",
     "",
     ...items.map((item) => `${item.quantity}x ${item.name} - ${item.priceText}`),
     "",
     `Summe: ${orderTotal.textContent}`,
   ];
-
-  const name = formData.get("customerName")?.trim();
-  const phone = formData.get("customerPhone")?.trim();
-  const note = formData.get("customerNote")?.trim();
 
   if (name) {
     lines.push(`Name: ${name}`);
@@ -309,6 +323,10 @@ function buildWhatsAppMessage(formData) {
 
   if (phone) {
     lines.push(`Telefon: ${phone}`);
+  }
+
+  if (orderType === "Lieferung" && address) {
+    lines.push(`Adresse: ${address}`);
   }
 
   if (note) {
@@ -324,6 +342,10 @@ tabs.forEach((tab) => {
 
 orderTabs.forEach((tab) => {
   tab.addEventListener("click", () => setOrderCategory(tab.dataset.orderCategory));
+});
+
+document.querySelectorAll('input[name="orderType"]').forEach((input) => {
+  input.addEventListener("change", updateOrderType);
 });
 
 openOrderButtons.forEach((button) => {
@@ -355,6 +377,12 @@ if (orderForm) {
 
     if (!orderItems.size) {
       openOrderPanel();
+      return;
+    }
+
+    updateOrderType();
+
+    if (!orderForm.reportValidity()) {
       return;
     }
 
@@ -434,5 +462,6 @@ if (!reduceMotion && parallaxItems.length) {
 
 renderProducts();
 setOrderCategory("all");
+updateOrderType();
 showSlide(0);
 startSlideshow();
