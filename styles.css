@@ -796,6 +796,52 @@ h3 {
   font-weight: 900;
 }
 
+.order-choice {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.order-choice label {
+  position: relative;
+  display: grid;
+  min-height: 48px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 11px 16px;
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.order-choice label:has(input:checked) {
+  border-color: rgba(41, 151, 255, 0.65);
+  background: rgba(41, 151, 255, 0.2);
+  color: #9bd0ff;
+}
+
+.order-choice input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cash-note {
+  border: 1px solid rgba(244, 196, 93, 0.28);
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(244, 196, 93, 0.08);
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.delivery-fields {
+  display: grid;
+  gap: 14px;
+}
+
 .order-form {
   display: grid;
   gap: 14px;
