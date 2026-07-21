@@ -1,3 +1,6 @@
+Ersetze deine komplette `styles.css` damit:
+
+```css
 :root {
   --paper: #000;
   --surface: #08080a;
@@ -109,6 +112,18 @@ button {
 .site-nav a:hover {
   background: rgba(255, 255, 255, 0.08);
   color: white;
+}
+
+.nav-order-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--blue);
+  color: white;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .nav-toggle {
@@ -507,7 +522,7 @@ h3 {
 
 .price-list li {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   gap: 16px;
   align-items: baseline;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -540,6 +555,215 @@ h3 {
 
 .price-list strong {
   white-space: nowrap;
+}
+
+.add-order-button,
+.qty-button,
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  cursor: pointer;
+}
+
+.add-order-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.add-order-button:hover,
+.qty-button:hover,
+.icon-button:hover {
+  border-color: rgba(41, 151, 255, 0.75);
+  background: rgba(41, 151, 255, 0.22);
+}
+
+.cart-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 12px 14px 12px 18px;
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.36);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.cart-fab strong {
+  display: grid;
+  min-width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: white;
+  color: #050505;
+  font-size: 0.9rem;
+}
+
+.order-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+}
+
+.order-panel.is-open {
+  display: block;
+}
+
+.order-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(8px);
+}
+
+.order-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  width: min(460px, 100%);
+  height: 100%;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  padding: 26px;
+  border-left: 1px solid var(--line);
+  background: #08080a;
+  box-shadow: -24px 0 80px rgba(0, 0, 0, 0.42);
+}
+
+.order-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: start;
+}
+
+.order-head h2 {
+  margin: 4px 0 0;
+  font-size: clamp(2rem, 7vw, 3rem);
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.order-empty {
+  padding: 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  color: var(--muted);
+}
+
+.order-empty.is-hidden {
+  display: none;
+}
+
+.order-items {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.order-items li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.order-item-name {
+  display: block;
+  font-weight: 800;
+}
+
+.order-item-price {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.order-qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 900;
+}
+
+.qty-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.order-form {
+  display: grid;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.order-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.order-form input,
+.order-form textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 13px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font: inherit;
+}
+
+.order-form textarea {
+  resize: vertical;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.order-total strong {
+  color: var(--blue);
 }
 
 .menu-card.is-hidden {
@@ -690,6 +914,13 @@ h3 {
     padding: 14px;
   }
 
+  .nav-order-button {
+    width: 100%;
+    border-radius: 12px;
+    padding: 14px;
+    text-align: left;
+  }
+
   .hero {
     min-height: 88svh;
     align-items: end;
@@ -745,5 +976,22 @@ h3 {
   .contact-card,
   .image-panel img {
     border-radius: 22px;
+  }
+
+  .price-list li {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .add-order-button {
+    grid-column: 2;
+  }
+
+  .cart-fab {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .order-drawer {
+    padding: 22px 18px;
   }
 }
