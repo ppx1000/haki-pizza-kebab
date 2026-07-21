@@ -246,63 +246,70 @@
       </section>
 
       <section class="deals-section" id="menues">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Menüs</p>
-          <h2>Wenn es schnell gehen soll: Menü nehmen.</h2>
-          <p>Mit Getränk, Pommes oder Reis wird aus deinem Favoriten direkt ein ganzes Essen.</p>
-        </div>
-        <div class="deal-grid">
-          <article class="deal-card reveal">
-            <span>1</span>
-            <h3>Döner Kebab Menü</h3>
-            <p>Mit Getränk und Pommes.</p>
-            <strong>8,00 €</strong>
-          </article>
-          <article class="deal-card reveal">
-            <span>3</span>
-            <h3>Hühner Dürüm Menü</h3>
-            <p>Mit Getränk</p>
-            <strong>7,00 €</strong>
-          </article>
-          <article class="deal-card reveal">
-            <span>3</span>
-            <h3>Hühner Dürüm Menü</h3>
-            <p>Mit Getränk und Pommes</p>
-            <strong>8,50 €</strong>
-          </article>
-          <article class="deal-card reveal">
-            <span>4</span>
-            <h3>Yaprak Dürüm Menü</h3>
-            <p>Mit Getränk</p>
-            <strong>8,00 €</strong>
-          </article>
-          <article class="deal-card reveal">
-            <span>4</span>
-            <h3>Yaprak Dürüm Menü</h3>
-            <p>Mit Getränk und Pommes.</p>
-            <strong>9,50 €</strong>
-          </article>
-          <article class="deal-card reveal">
-            <span>5</span>
-            <h3>Schnitzel Semmel</h3>
-            <p>Mit Getränk</p>
-            <strong>6,50 €</strong>
-          </article>
-          <article class="deal-card reveal">
-            <span>5</span>
-            <h3>Schnitzel Semmel</h3>
-            <p>Mit Getränk und Pommes</p>
-            <strong>8,00 €</strong>
-          </article>
-          <article class="deal-card reveal">
-            <span>9</span>
-            <h3>Chicken Nuggets Menü</h3>
-            <p>Mit Getränk oder Pommes.</p>
-            <strong>5,50 €</strong>
-          </article>
-        </div>
-      </section>
+  <div class="section-heading reveal">
+    <p class="eyebrow">Menüs</p>
+    <h2>Wenn es schnell gehen soll: Menü nehmen.</h2>
+    <p>Mit Getränk, Pommes oder Reis wird aus deinem Favoriten direkt ein ganzes Essen.</p>
+  </div>
 
+  <div class="deal-grid">
+    <article class="deal-card reveal" data-category="menues">
+      <span>1</span>
+      <h3>Döner Kebab Menü</h3>
+      <p>Mit Getränk und Pommes.</p>
+      <strong>8,00 €</strong>
+    </article>
+
+    <article class="deal-card reveal" data-category="menues">
+      <span>3</span>
+      <h3>Hühner Dürüm Menü</h3>
+      <p>Mit Getränk</p>
+      <strong>7,00 €</strong>
+    </article>
+
+    <article class="deal-card reveal" data-category="menues">
+      <span>3</span>
+      <h3>Hühner Dürüm Menü</h3>
+      <p>Mit Getränk und Pommes</p>
+      <strong>8,50 €</strong>
+    </article>
+
+    <article class="deal-card reveal" data-category="menues">
+      <span>4</span>
+      <h3>Yaprak Dürüm Menü</h3>
+      <p>Mit Getränk</p>
+      <strong>8,00 €</strong>
+    </article>
+
+    <article class="deal-card reveal" data-category="menues">
+      <span>4</span>
+      <h3>Yaprak Dürüm Menü</h3>
+      <p>Mit Getränk und Pommes.</p>
+      <strong>9,50 €</strong>
+    </article>
+
+    <article class="deal-card reveal" data-category="menues">
+      <span>5</span>
+      <h3>Schnitzel Semmel</h3>
+      <p>Mit Getränk</p>
+      <strong>6,50 €</strong>
+    </article>
+
+    <article class="deal-card reveal" data-category="menues">
+      <span>5</span>
+      <h3>Schnitzel Semmel</h3>
+      <p>Mit Getränk und Pommes</p>
+      <strong>8,00 €</strong>
+    </article>
+
+    <article class="deal-card reveal" data-category="menues">
+      <span>9</span>
+      <h3>Chicken Nuggets Menü</h3>
+      <p>Mit Getränk oder Pommes.</p>
+      <strong>5,50 €</strong>
+    </article>
+  </div>
+</section>
       <section class="contact-section" id="kontakt">
         <div class="contact-copy reveal">
           <p class="eyebrow">Kontakt</p>
@@ -335,10 +342,11 @@
           <section class="order-menu" aria-label="Produkte auswählen">
             <div class="order-tabs" aria-label="Bestellkategorien">
               <button class="order-tab is-active" type="button" data-order-category="all">Alle</button>
-              <button class="order-tab" type="button" data-order-category="kebab">Kebab</button>
-              <button class="order-tab" type="button" data-order-category="pizza">Pizza</button>
-              <button class="order-tab" type="button" data-order-category="pide">Pide</button>
-              <button class="order-tab" type="button" data-order-category="extras">Extras</button>
+             <button class="order-tab" type="button" data-order-category="kebab">Kebab</button>
+             <button class="order-tab" type="button" data-order-category="pizza">Pizza</button>
+             <button class="order-tab" type="button" data-order-category="pide">Pide</button>
+             <button class="order-tab" type="button" data-order-category="menues">Menüs</button>
+             <button class="order-tab" type="button" data-order-category="extras">Extras</button>
             </div>
             <div class="order-product-list" data-order-products></div>
           </section>
